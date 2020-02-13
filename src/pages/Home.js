@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import { useState } from "react";
 
-const Home = () => { 
-    return <h1>helloooo</h1>
-} 
+const Home = () => {
+  //     const [activities, setActivities] = useState({activities: {}});
+
+  return <h1>HIIII</h1>;
+};
 
 export default Home;

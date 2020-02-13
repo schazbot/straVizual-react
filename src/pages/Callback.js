@@ -6,15 +6,17 @@ function Callback(props) {
 
   let setToken = () => {
     let url = props.location.href;
-    debugger
     let code = url.substring(
       url.lastIndexOf("code=") + 5,
       url.lastIndexOf("&")
       );
       console.log(code)
     API.getUserToken(code).then(resp => {
-      debugger
+      console.log(resp)
+      localStorage.setItem("code", code)
       localStorage.setItem("r_token", resp.refresh_token);
+      localStorage.setItem("access_token", resp.access_token);
+      API.getUserActivities(resp.access_token)
     });
   };
 
