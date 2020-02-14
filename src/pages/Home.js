@@ -1,10 +1,15 @@
 import React from "react";
-import { useState } from "react";
+import Activity from "../components/Activity";
 
-const Home = () => {
-  //     const [activities, setActivities] = useState({activities: {}});
-
-  return <h1>HIIII</h1>;
+const Home = ({ activities }) => {
+  return (
+    <div>
+      <h1>Your last 30 activities</h1>
+      {activities.map(activity => (
+        <Activity key={activity.id} activity={activity} />
+      ))}
+    </div>
+  );
 };
 
 export default Home;
