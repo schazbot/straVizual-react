@@ -1,15 +1,16 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 
-const  startDateFormat = stDt => {
-    let formatted = [];
-    const dateArr = stDt.split(/\D+/g);
-    formatted.push(dateArr[0], dateArr[1], dateArr[2]);
-    return formatted.reverse().join("/");
-  };
+// item[0]._chart.data.datasets[0].data.indexOf(item[0]._chart.data.datasets[0].data[(item[0]._index)])
+
+const startDateFormat = stDt => {
+  let formatted = [];
+  const dateArr = stDt.split(/\D+/g);
+  formatted.push(dateArr[0], dateArr[1], dateArr[2]);
+  return formatted.reverse().join("/");
+};
 
 const Home = ({ activities }) => {
-
   const distanceArray = activities.map(activity =>
     (activity.distance / 1000).toFixed(1)
   );
@@ -17,6 +18,12 @@ const Home = ({ activities }) => {
   const datesArr = activities.map(activity =>
     startDateFormat(activity.start_date)
   );
+
+  const findActvityObjectFromDistance = item => {
+    let itemDistance = item[0]._chart.data.datasets[0].data[item[0]._index];
+    let activityIndex = distanceArray.indexOf(itemDistance);
+    return activities[activityIndex];
+  };
 
   const data = {
     labels: datesArr,
@@ -46,6 +53,9 @@ const Home = ({ activities }) => {
   };
 
   const options = {
+    onClick: (e, item) => {
+      findActvityObjectFromDistance(item);
+    },
     scales: {
       yAxes: [
         {
