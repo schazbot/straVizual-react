@@ -1,5 +1,6 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
+import ActivityMap from "../components/ActivityMap";
 
 // item[0]._chart.data.datasets[0].data.indexOf(item[0]._chart.data.datasets[0].data[(item[0]._index)])
 
@@ -22,7 +23,7 @@ const Home = ({ activities }) => {
   const findActvityObjectFromDistance = item => {
     let itemDistance = item[0]._chart.data.datasets[0].data[item[0]._index];
     let activityIndex = distanceArray.indexOf(itemDistance);
-    return activities[activityIndex];
+    return console.log(activities[activityIndex]);
   };
 
   const data = {
@@ -71,6 +72,7 @@ const Home = ({ activities }) => {
     <div>
       <h1>Your last 30 rides</h1>
       <Bar data={data} options={options} />
+      <ActivityMap />
     </div>
   );
 };
