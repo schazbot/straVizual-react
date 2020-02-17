@@ -10,9 +10,7 @@ function Callback(props) {
       url.lastIndexOf("code=") + 5,
       url.lastIndexOf("&")
       );
-      // console.log(code)
     API.getUserToken(code).then(resp => {
-      // console.log(resp)
       localStorage.setItem("code", code)
       localStorage.setItem("r_token", resp.refresh_token);
       localStorage.setItem("access_token", resp.access_token);

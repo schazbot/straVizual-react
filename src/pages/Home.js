@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import ActivityMap from "../components/ActivityMap";
 
@@ -12,6 +12,9 @@ const startDateFormat = stDt => {
 };
 
 const Home = ({ activities }) => {
+
+  const [selectedActivity, setSelectedActivity] = useState([]);
+
   const distanceArray = activities.map(activity =>
     (activity.distance / 1000).toFixed(1)
   );
@@ -20,10 +23,10 @@ const Home = ({ activities }) => {
     startDateFormat(activity.start_date)
   );
 
-  const findActvityObjectFromDistance = item => {
+  const findActivityObjectFromDistance = item => {
     let itemDistance = item[0]._chart.data.datasets[0].data[item[0]._index];
     let activityIndex = distanceArray.indexOf(itemDistance);
-    return console.log(activities[activityIndex]);
+    return setSelectedActivity(activities[activityIndex].start_latlng);
   };
 
   const data = {
@@ -55,7 +58,7 @@ const Home = ({ activities }) => {
 
   const options = {
     onClick: (e, item) => {
-      findActvityObjectFromDistance(item);
+      findActivityObjectFromDistance(item);
     },
     scales: {
       yAxes: [
@@ -68,11 +71,13 @@ const Home = ({ activities }) => {
     }
   };
 
+  
+
   return (
     <div>
       <h1>Your last 30 rides</h1>
       <Bar data={data} options={options} />
-      <ActivityMap />
+      <ActivityMap selectedActivity={selectedActivity} />
     </div>
   );
 };
