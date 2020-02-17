@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import ActivityMap from "../components/ActivityMap";
-
-// item[0]._chart.data.datasets[0].data.indexOf(item[0]._chart.data.datasets[0].data[(item[0]._index)])
+const polyline = require("@mapbox/polyline");
 
 const startDateFormat = stDt => {
   let formatted = [];
@@ -11,10 +10,9 @@ const startDateFormat = stDt => {
   return formatted.reverse().join("/");
 };
 
-const polyline = require("@mapbox/polyline");
-
 const Home = ({ activities }) => {
-  const [selectedActivity, setSelectedActivity] = useState([]);
+
+  const [selectedActivityPolyline, setSelectedActivityPolyline] = useState([]);
 
   const distanceArray = activities.map(activity =>
     (activity.distance / 1000).toFixed(1)
@@ -24,15 +22,15 @@ const Home = ({ activities }) => {
     startDateFormat(activity.start_date)
   );
 
-  const findActivityObjectFromDistance = item => {
+  function findActivityObjectFromDistance(item) {
     let itemDistance = item[0]._chart.data.datasets[0].data[item[0]._index];
     let activityIndex = distanceArray.indexOf(itemDistance);
 
     let decodedPolyline = polyline.decode(
       activities[activityIndex].map.summary_polyline
     );
-    return setSelectedActivity(decodedPolyline);
-  };
+    return setSelectedActivityPolyline(decodedPolyline);
+  }
 
   const data = {
     labels: datesArr,
@@ -80,7 +78,7 @@ const Home = ({ activities }) => {
     <div>
       <h1>Your last 30 rides</h1>
       <Bar data={data} options={options} />
-      <ActivityMap selectedActivity={selectedActivity} />
+      <ActivityMap selectedActivity={selectedActivityPolyline} />
     </div>
   );
 };
