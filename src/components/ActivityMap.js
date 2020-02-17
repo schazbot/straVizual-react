@@ -19,12 +19,11 @@ export default class ActivityMap extends Component {
         style={{ width: "80%", height: "600px" }}
       >
         {this.props.selectedActivity ? (
-          <Polyline color="red" positions={[this.props.selectedActivity]} />
+          <Polyline
+            color="red"
+            positions={[this.props.selectedActivityPolyline]}
+          />
         ) : null}
-        {/* <TileLayer
-          attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />  */}
         <MapboxLayer
           accessToken={MAPBOX_ACCESS_TOKEN}
           style="mapbox://styles/mapbox/streets-v9"

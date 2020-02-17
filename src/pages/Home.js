@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import ActivityMap from "../components/ActivityMap";
+import ActivityCard from "../components/ActivityCard";
 const polyline = require("@mapbox/polyline");
 
 const startDateFormat = stDt => {
@@ -11,7 +12,7 @@ const startDateFormat = stDt => {
 };
 
 const Home = ({ activities }) => {
-
+  const [selectedActivity, setSelectedActivity] = useState([]);
   const [selectedActivityPolyline, setSelectedActivityPolyline] = useState([]);
 
   const distanceArray = activities.map(activity =>
@@ -29,6 +30,9 @@ const Home = ({ activities }) => {
     let decodedPolyline = polyline.decode(
       activities[activityIndex].map.summary_polyline
     );
+
+    setSelectedActivity(activities[activityIndex]);
+
     return setSelectedActivityPolyline(decodedPolyline);
   }
 
@@ -78,7 +82,12 @@ const Home = ({ activities }) => {
     <div>
       <h1>Your last 30 rides</h1>
       <Bar data={data} options={options} />
-      <ActivityMap selectedActivity={selectedActivityPolyline} />
+      <ActivityMap
+        selectedActivityPolyline={selectedActivityPolyline}
+        selectedActivity={selectedActivity}
+      />
+
+      <ActivityCard />
     </div>
   );
 };
