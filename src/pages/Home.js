@@ -11,8 +11,9 @@ const startDateFormat = stDt => {
   return formatted.reverse().join("/");
 };
 
-const Home = ({ activities }) => {
+const polyline = require("@mapbox/polyline");
 
+const Home = ({ activities }) => {
   const [selectedActivity, setSelectedActivity] = useState([]);
 
   const distanceArray = activities.map(activity =>
@@ -26,7 +27,11 @@ const Home = ({ activities }) => {
   const findActivityObjectFromDistance = item => {
     let itemDistance = item[0]._chart.data.datasets[0].data[item[0]._index];
     let activityIndex = distanceArray.indexOf(itemDistance);
-    return setSelectedActivity(activities[activityIndex].start_latlng);
+
+    let decodedPolyline = polyline.decode(
+      activities[activityIndex].map.summary_polyline
+    );
+    return setSelectedActivity(decodedPolyline);
   };
 
   const data = {
@@ -70,8 +75,6 @@ const Home = ({ activities }) => {
       ]
     }
   };
-
-  
 
   return (
     <div>

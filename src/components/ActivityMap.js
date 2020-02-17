@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Map, TileLayer, Polyline } from "react-leaflet";
-// import Decode from "../components/Decode";
 const polyline = require("@mapbox/polyline");
 
 export default class ActivityMap extends Component {
