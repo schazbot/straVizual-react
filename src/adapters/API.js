@@ -30,21 +30,11 @@ const getUserActivities = accessToken => {
     redirect: "follow"
   };
 
-  return fetch(
-    "https://www.strava.com/api/v3/athlete/activities?per_page=30",
-    requestOptions
-  )
-    .then(response => response.json())
-    // .then(result => console.log(result))
-    .catch(error => console.log("error", error));
-
-  // const bearer = "Bearer " + accessToken;
-  // return fetch(ACTIVITY_URL, {
-  //   headers: {
-  //     Accept: "application/json",
-  //     code: bearer
-  //   }
-  // });
+  return (
+    fetch(ACTIVITY_URL, requestOptions)
+      .then(response => response.json())
+      .catch(error => console.log("error", error))
+  );
 };
 
 export default { getUserToken, getUserActivities };

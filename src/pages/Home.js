@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import ActivityMap from "../components/ActivityMap";
 import ActivityCard from "../components/ActivityCard";
@@ -15,6 +15,7 @@ const Home = ({ activities }) => {
   const [selectedActivity, setSelectedActivity] = useState([]);
   const [selectedActivityPolyline, setSelectedActivityPolyline] = useState([]);
 
+
   const distanceArray = activities.map(activity =>
     (activity.distance / 1000).toFixed(1)
   );
@@ -26,7 +27,6 @@ const Home = ({ activities }) => {
   function findActivityObjectFromDistance(item) {
     let itemDistance = item[0]._chart.data.datasets[0].data[item[0]._index];
     let activityIndex = distanceArray.indexOf(itemDistance);
-
     let decodedPolyline = polyline.decode(
       activities[activityIndex].map.summary_polyline
     );
@@ -87,7 +87,7 @@ const Home = ({ activities }) => {
         selectedActivity={selectedActivity}
       />
 
-      <ActivityCard />
+      <ActivityCard selectedActivity={selectedActivity} />
     </div>
   );
 };
