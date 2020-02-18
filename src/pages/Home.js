@@ -14,10 +14,6 @@ const startDateFormat = stDt => {
 const Home = ({ activities }) => {
   const [selectedActivity, setSelectedActivity] = useState([]);
   const [selectedActivityPolyline, setSelectedActivityPolyline] = useState([]);
-  // const [selectedActivityBounds, setSelectedActivityBounds] = useState([
-  //   [50.505, -29.09],
-  //   [52.505, 29.09]
-  // ]);
 
   const distanceArray = activities.map(activity =>
     (activity.distance / 1000).toFixed(1)
@@ -39,28 +35,31 @@ const Home = ({ activities }) => {
     return setSelectedActivityPolyline(decodedPolyline);
   }
 
+  function randomColor() {
+    const colorArray = [
+      "rgba(255, 99, 132, 0.3)",
+      "rgba(54, 162, 235, 0.3)",
+      "rgba(255, 206, 86, 0.3)",
+      "rgba(75, 192, 192, 0.3)",
+      "rgba(153, 102, 255, 0.3)",
+      "rgba(255, 159, 64, 0.3)"
+    ];
+
+    let randomColors = [];
+    for (let i in distanceArray) {
+      randomColors.push(colorArray[Math.floor(Math.random() * colorArray.length)]);
+    }
+    return randomColors;
+  }
+
   const data = {
     labels: datesArr,
     datasets: [
       {
         label: "Distance in KM",
         data: distanceArray,
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)"
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)"
-        ],
+        backgroundColor: randomColor(),
+        borderColor: randomColor(),
         borderWidth: 1
       }
     ]
@@ -81,7 +80,7 @@ const Home = ({ activities }) => {
     }
   };
 
-  const boundsIndex = selectedActivityPolyline.length / 2
+  const boundsIndex = selectedActivityPolyline.length / 2;
   const boundsOptions = selectedActivityPolyline[boundsIndex];
 
   return (
