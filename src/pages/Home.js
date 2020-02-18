@@ -14,7 +14,10 @@ const startDateFormat = stDt => {
 const Home = ({ activities }) => {
   const [selectedActivity, setSelectedActivity] = useState([]);
   const [selectedActivityPolyline, setSelectedActivityPolyline] = useState([]);
-
+  // const [selectedActivityBounds, setSelectedActivityBounds] = useState([
+  //   [50.505, -29.09],
+  //   [52.505, 29.09]
+  // ]);
 
   const distanceArray = activities.map(activity =>
     (activity.distance / 1000).toFixed(1)
@@ -78,6 +81,9 @@ const Home = ({ activities }) => {
     }
   };
 
+  const boundsIndex = selectedActivityPolyline.length / 2
+  const boundsOptions = selectedActivityPolyline[boundsIndex];
+
   return (
     <div>
       <h1>Your last 30 rides</h1>
@@ -85,6 +91,7 @@ const Home = ({ activities }) => {
       <ActivityMap
         selectedActivityPolyline={selectedActivityPolyline}
         selectedActivity={selectedActivity}
+        bounds={boundsOptions}
       />
 
       <ActivityCard selectedActivity={selectedActivity} />

@@ -8,17 +8,16 @@ export default class ActivityMap extends Component {
   state = {
     lat: 51.505,
     lng: -0.09,
-    zoom: 13
+    zoom: 12
   };
 
   render() {
-   
-
     return (
       <Map
-        center={[this.state.lat, this.state.lng]}
+        center={this.props.bounds}
         zoom={this.state.zoom}
         style={{ width: "80%", height: "600px" }}
+        // boundsOptions={this.props.bounds}
       >
         {this.props.selectedActivity && (
           <Polyline
