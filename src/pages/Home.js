@@ -12,7 +12,7 @@ const startDateFormat = stDt => {
 };
 
 const Home = ({ activities }) => {
-  const [selectedActivity, setSelectedActivity] = useState([]);
+  const [selectedActivity, setSelectedActivity] = useState({});
   const [selectedActivityPolyline, setSelectedActivityPolyline] = useState([]);
 
   const distanceArray = activities.map(activity =>
@@ -47,7 +47,9 @@ const Home = ({ activities }) => {
 
     let randomColors = [];
     for (let i in distanceArray) {
-      randomColors.push(colorArray[Math.floor(Math.random() * colorArray.length)]);
+      randomColors.push(
+        colorArray[Math.floor(Math.random() * colorArray.length)]
+      );
     }
     return randomColors;
   }
@@ -92,8 +94,9 @@ const Home = ({ activities }) => {
         selectedActivity={selectedActivity}
         bounds={boundsOptions}
       />
-
-      <ActivityCard selectedActivity={selectedActivity} />
+      {selectedActivity ? (
+        <ActivityCard selectedActivity={selectedActivity} />
+      ) : null}
     </div>
   );
 };
