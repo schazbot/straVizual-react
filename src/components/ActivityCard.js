@@ -29,7 +29,7 @@ const ActivityCard = ({ selectedActivity }) => {
   }
 
   return (
-    <div>
+    <div className="activity-card">
       <p>Av Speed: {convertSpeed(selectedActivity.average_speed)} km/hr</p>
       <p>
         Moving Time: {secondsToDaysHoursMins(selectedActivity.moving_time)}{" "}

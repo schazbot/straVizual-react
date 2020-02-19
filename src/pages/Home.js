@@ -93,6 +93,7 @@ const Home = ({ activities }) => {
       <h4>Your last 10 rides</h4>
       <p>Click a bar to see map and stats</p>
       <HorizontalBar data={data} options={options} />
+      {selectedActivity && <ActivityCard selectedActivity={selectedActivity} />}
       {selectedActivity && (
         <ActivityMap
           selectedActivityPolyline={selectedActivityPolyline}
@@ -100,8 +101,6 @@ const Home = ({ activities }) => {
           bounds={boundsOptions}
         />
       )}
-
-      {selectedActivity && <ActivityCard selectedActivity={selectedActivity} />}
     </div>
   );
 };

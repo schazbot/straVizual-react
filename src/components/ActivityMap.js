@@ -8,7 +8,7 @@ export default class ActivityMap extends Component {
   state = {
     lat: 51.505,
     lng: -0.09,
-    zoom: 11.5
+    zoom: 12
   };
 
   render() {

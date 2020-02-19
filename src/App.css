@@ -24,12 +24,20 @@ h1 {
 .orange-header {
   height: 3em;
   background: #fc5100;
+  display: flex;
+  flex-direction: row;
 }
 
 .orange-header h1 {
   color: white;
   font-weight: 1000;
   font-stretch: condensed;
+}
+
+img#bike-svg {
+  height: inherit;
+  filter: invert(1);
+  margin: 1em;
 }
 
 #chart {
@@ -40,7 +48,6 @@ h1 {
 
 .chartjs-render-monitor {
   align-items: center;
-
 }
 #mapid {
   height: 180px;
@@ -50,4 +57,12 @@ h1 {
 .map-container {
   margin: auto;
   text-align: -webkit-center;
+}
+
+.activity-card {
+  border: solid 1px #fc5100;
+  background: #fc5100;
+  border-radius: 25px;
+  opacity: 0.8;
+  height: 50%;
 }
