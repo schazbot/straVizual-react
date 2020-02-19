@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { HorizontalBar } from "react-chartjs-2";
 import ActivityMap from "../components/ActivityMap";
 import ActivityCard from "../components/ActivityCard";
 import Header from "../components/Header";
@@ -13,7 +13,7 @@ const startDateFormat = stDt => {
 };
 
 const Home = ({ activities }) => {
-  const [selectedActivity, setSelectedActivity] = useState({});
+  const [selectedActivity, setSelectedActivity] = useState(null);
   const [selectedActivityPolyline, setSelectedActivityPolyline] = useState([]);
 
   const distanceArray = activities.map(activity =>
@@ -63,7 +63,7 @@ const Home = ({ activities }) => {
         data: distanceArray,
         backgroundColor: randomColor(),
         borderColor: randomColor(),
-        borderWidth: 0
+        borderWidth: 1
       }
     ]
   };
@@ -90,16 +90,18 @@ const Home = ({ activities }) => {
     <div>
       <Header />
 
-      <h4>Your last 30 rides</h4>
-      <Bar data={data} options={options} />
-      <ActivityMap
-        selectedActivityPolyline={selectedActivityPolyline}
-        selectedActivity={selectedActivity}
-        bounds={boundsOptions}
-      />
-      {selectedActivity ? (
-        <ActivityCard selectedActivity={selectedActivity} />
-      ) : null}
+      <h4>Your last 10 rides</h4>
+      <p>Click a bar to see map and stats</p>
+      <HorizontalBar data={data} options={options} />
+      {selectedActivity && (
+        <ActivityMap
+          selectedActivityPolyline={selectedActivityPolyline}
+          selectedActivity={selectedActivity}
+          bounds={boundsOptions}
+        />
+      )}
+
+      {selectedActivity && <ActivityCard selectedActivity={selectedActivity} />}
     </div>
   );
 };

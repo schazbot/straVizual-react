@@ -5,7 +5,7 @@ const CLIENT_SECRET = "df608a3b3e4c18c32cee62a3da35f30bbf845a7d";
 const TOKEN_URL = "https://www.strava.com/oauth/token";
 
 const ACTIVITY_URL =
-  "https://www.strava.com/api/v3/athlete/activities?per_page=30";
+  "https://www.strava.com/api/v3/athlete/activities?per_page=10";
 
 const getUserToken = code => {
   let data = new URLSearchParams();
