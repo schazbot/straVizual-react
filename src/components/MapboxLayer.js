@@ -1,5 +1,6 @@
 import L from "leaflet";
-import {} from "mapbox-gl-leaflet";
+import { } from "mapbox-gl-leaflet";
+import 'mapbox-gl/src/css/mapbox-gl.css'
 import PropTypes from "prop-types";
 import { GridLayer, withLeaflet } from "react-leaflet";
 

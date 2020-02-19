@@ -4,6 +4,7 @@ import "./App.css";
 import "./pages/Login";
 import Home from "./pages/Home";
 import API from "./adapters/API";
+import Header from './components/Header'
 import Callback from "./pages/Callback";
 import Login from "./pages/Login";
 

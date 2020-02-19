@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import ActivityMap from "../components/ActivityMap";
 import ActivityCard from "../components/ActivityCard";
+import Header from "../components/Header";
 const polyline = require("@mapbox/polyline");
 
 const startDateFormat = stDt => {
@@ -62,7 +63,7 @@ const Home = ({ activities }) => {
         data: distanceArray,
         backgroundColor: randomColor(),
         borderColor: randomColor(),
-        borderWidth: 1
+        borderWidth: 0
       }
     ]
   };
@@ -87,7 +88,9 @@ const Home = ({ activities }) => {
 
   return (
     <div>
-      <h1>Your last 30 rides</h1>
+      <Header />
+
+      <h4>Your last 30 rides</h4>
       <Bar data={data} options={options} />
       <ActivityMap
         selectedActivityPolyline={selectedActivityPolyline}

@@ -13,23 +13,24 @@ export default class ActivityMap extends Component {
 
   render() {
     return (
-      <Map
-        center={this.props.bounds}
-        zoom={this.state.zoom}
-        style={{ width: "80%", height: "600px" }}
-        // boundsOptions={this.props.bounds}
-      >
-        {this.props.selectedActivity && (
-          <Polyline
-            color="red"
-            positions={[this.props.selectedActivityPolyline]}
+      <div className="map-container">
+        <Map
+          center={this.props.bounds}
+          zoom={this.state.zoom}
+          style={{ width: "80%", height: "600px" }}
+        >
+          {this.props.selectedActivity && (
+            <Polyline
+              color="red"
+              positions={[this.props.selectedActivityPolyline]}
+            />
+          )}
+          <MapboxLayer
+            accessToken={MAPBOX_ACCESS_TOKEN}
+            style="mapbox://styles/mapbox/streets-v9"
           />
-        )}
-        <MapboxLayer
-          accessToken={MAPBOX_ACCESS_TOKEN}
-          style="mapbox://styles/mapbox/streets-v9"
-        />
-      </Map>
+        </Map>
+      </div>
     );
   }
 }
