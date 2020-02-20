@@ -22,7 +22,7 @@ h1 {
 }
 
 .orange-header h1 {
-  color: white;
+  color: #f7f7fa;
   font-weight: 1000;
   font-stretch: condensed;
   margin: auto;
@@ -98,5 +98,5 @@ img#bike-svg {
 }
 
 .activity-footer {
-  
+
 }

@@ -70,7 +70,11 @@ const Home = ({ activities }) => {
 
   const options = {
     onClick: (e, item) => {
-      findActivityObjectFromDistance(item);
+      if (item[0] === undefined) {
+        return null;
+      } else {
+        findActivityObjectFromDistance(item);
+      }
     },
     scales: {
       yAxes: [
