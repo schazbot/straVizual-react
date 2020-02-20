@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { HorizontalBar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import ActivityMap from "../components/ActivityMap";
 import ActivityCard from "../components/ActivityCard";
 import Header from "../components/Header";
+import Divider from "../components/Divider";
 const polyline = require("@mapbox/polyline");
 
 const startDateFormat = stDt => {
@@ -93,17 +94,25 @@ const Home = ({ activities }) => {
   return (
     <div>
       <Header />
+      <div className="landing-info">
+        <h4>Your last 10 rides</h4>
+        <p>Click a bar to see map and stats</p>
+      </div>
+      <Divider />
 
-      <h4>Your last 10 rides</h4>
-      <p>Click a bar to see map and stats</p>
-      <HorizontalBar data={data} options={options} />
+      <Bar data={data} options={options} />
+      <Divider />
       {selectedActivity && <ActivityCard selectedActivity={selectedActivity} />}
       {selectedActivity && (
-        <ActivityMap
-          selectedActivityPolyline={selectedActivityPolyline}
-          selectedActivity={selectedActivity}
-          bounds={boundsOptions}
-        />
+        <>
+          <Divider />
+
+          <ActivityMap
+            selectedActivityPolyline={selectedActivityPolyline}
+            selectedActivity={selectedActivity}
+            bounds={boundsOptions}
+          />
+        </>
       )}
     </div>
   );
