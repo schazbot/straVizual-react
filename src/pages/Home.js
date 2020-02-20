@@ -99,21 +99,26 @@ const Home = ({ activities }) => {
         <p>Click a bar to see map and stats</p>
       </div>
       <Divider />
-
       <Bar data={data} options={options} />
       <Divider />
       {selectedActivity && <ActivityCard selectedActivity={selectedActivity} />}
-      {selectedActivity && (
-        <>
-          <Divider />
 
-          <ActivityMap
-            selectedActivityPolyline={selectedActivityPolyline}
-            selectedActivity={selectedActivity}
-            bounds={boundsOptions}
-          />
-        </>
-      )}
+      <div id="content">
+        
+        <div class="expandable" id="nav">
+          {selectedActivity && (
+            <>
+              <Divider />
+
+              <ActivityMap
+                selectedActivityPolyline={selectedActivityPolyline}
+                selectedActivity={selectedActivity}
+                bounds={boundsOptions}
+              />
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

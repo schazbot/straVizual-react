@@ -1,9 +1,6 @@
 import React from "react";
 
 const ActivityCard = ({ selectedActivity }) => {
-  console.log(selectedActivity.max_speed);
-  console.log(selectedActivity.average_speed);
-
   function convertSpeed(speed) {
     const converted = parseFloat(speed) * 3.6;
     const result = converted.toFixed(2);
@@ -59,7 +56,11 @@ const ActivityCard = ({ selectedActivity }) => {
         </p>
       </div>
       <div className="activity-footer">
-        <p>click to jump to map<span>🧭</span></p>
+        <a href="#nav">
+          <p>
+            click to jump to map<span>🧭</span>
+          </p>
+        </a>
       </div>
     </div>
   );
