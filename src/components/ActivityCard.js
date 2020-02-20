@@ -30,17 +30,37 @@ const ActivityCard = ({ selectedActivity }) => {
 
   return (
     <div className="activity-card">
-      <p>Av Speed: {convertSpeed(selectedActivity.average_speed)} km/hr</p>
-      <p>
-        Moving Time: {secondsToDaysHoursMins(selectedActivity.moving_time)}{" "}
-        km/hr
-      </p>
-      <p>
-        Elapsed Time: {secondsToDaysHoursMins(selectedActivity.elapsed_time)}{" "}
-        seconds
-      </p>
-      <p>Max Speed: {convertSpeed(selectedActivity.max_speed)} km/hr</p>
-      <p>Av Watts: {selectedActivity.average_watts} w</p>
+      <div className="activity-header">
+        <h4>
+          <strong id="activity-name">{selectedActivity.name}</strong>
+        </h4>
+        <p>
+          <strong>Date: </strong>
+          {selectedActivity.start_date}
+        </p>
+      </div>
+      <div className="activity-body">
+        <p>
+          <strong>Av Speed: </strong>
+          <br />
+          {convertSpeed(selectedActivity.average_speed)} km/hr
+        </p>
+        <p>
+          <strong>Moving Time: </strong> <br />
+          {secondsToDaysHoursMins(selectedActivity.moving_time)}
+        </p>
+        <p>
+          <strong>Max Speed: </strong> <br />
+          {convertSpeed(selectedActivity.max_speed)} km/hr
+        </p>
+        <p>
+          <strong>Elevation Gain: </strong> <br />
+          {selectedActivity.elev_high}m
+        </p>
+      </div>
+      <div className="activity-footer">
+        <p>click to jump to map<span>🧭</span></p>
+      </div>
     </div>
   );
 };
