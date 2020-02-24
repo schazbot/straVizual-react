@@ -92,22 +92,26 @@ const Home = ({ activities }) => {
   const boundsOptions = selectedActivityPolyline[boundsIndex];
 
   return (
-    <div>
+    <>
       <Header />
       <div className="landing-info">
         <h4>Your last 10 rides</h4>
         <p>Click a bar to see map and stats</p>
       </div>
-      <Divider />
-      <Bar data={data} options={options} />
-      <Divider />
-      {selectedActivity && <ActivityCard selectedActivity={selectedActivity} />}
 
-      <div id="content">
-        
+      <Divider />
+      <div className="landing-section">
+        <div>
+          <Bar data={data} options={options} />
+          <Divider />
+          {selectedActivity && (
+            <ActivityCard selectedActivity={selectedActivity} />
+          )}
+        </div>
+
         <div class="expandable" id="nav">
           {selectedActivity && (
-            <>
+            <div className="landing-bottom-section">
               <Divider />
 
               <ActivityMap
@@ -115,11 +119,11 @@ const Home = ({ activities }) => {
                 selectedActivity={selectedActivity}
                 bounds={boundsOptions}
               />
-            </>
+            </div>
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
