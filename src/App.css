@@ -40,6 +40,12 @@ hr {
   font-family: "Kanit", sans-serif;
 }
 
+.login-button{
+  padding:16px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
 img#bike-svg {
   height: inherit;
   filter: invert(1);
