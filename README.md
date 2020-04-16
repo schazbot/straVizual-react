@@ -1,5 +1,14 @@
+## Stravizual
 
 <img src="demo/StravizualDemo.gif" width="300">
+
+
+### Technologies Used
+Strava API
+Leaflet
+Mapbox Polyline
+Reach Router
+React Chart.js
 
 
 
