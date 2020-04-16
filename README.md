@@ -1,5 +1,5 @@
 
-![Stravizual Demo](demo/StravizualDemo.gif)
+![Stravizual Demo](demo/StravizualDemo.gif| width=100)
 
 
 
