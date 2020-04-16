@@ -3,13 +3,13 @@ import bike from "../assets/bike.svg";
 
 const Header = () => {
   return (
-    <div className="orange-header">
-      <img id="bike-svg" src={bike} />
+    <nav className="orange-header">
+      <img alt="a racing bicyle"id="bike-svg" src={bike}/>
 
       <h1>
         <strong>STRAVIZUAL</strong>
       </h1>
-    </div>
+    </nav>
   );
 };
 export default Header;
